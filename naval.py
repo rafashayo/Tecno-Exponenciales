@@ -3,39 +3,39 @@ n = 10
 tablero = []
 tablero_visible = []
 
+import random
 
 def graficar(tablero):
-for fila in tablero:
-for c in fila:
-print(c, end="")
-print()
+    for fila in tablero:
+        for c in fila:
+            print(c, end=" ")
+        print()
 
+for _ in range(n):
+    fila = ["🌊"] * n
+    tablero.append(fila)
 
-for in range(n):
-fila = ["🌊"] n
-tablero.append(fila)
-
-for in range(n):
-fila = ["🌊"] n
-tablero_visible.append(fila)
+for _ in range(n):
+    fila = ["🌊"] * n
+    tablero_visible.append(fila)
 
 graficar(tablero_visible)
+
 for i in range(3):
-fila_random = (123456789 (2 + i)) % n
-columna_random = (987654321 (6 + i)) % n
-tablero[fila_random][columna_random] = "🚢"
+    fila_random = (123456789 * (2 + i)) % n
+    columna_random = (987654321 * (6 + i)) % n
+    tablero[fila_random][columna_random] = "🚢"
 
 while True:
-inputFila: int = int(input("Ingrese fila: "))
-inputColumna: int = int(input("Ingrese columna: "))
+    inputFila = int(input("Ingrese fila (0-9): "))
+    inputColumna = int(input("Ingrese columna (0-9): "))
 
-if tablero[inputFila][inputColumna] == "🚢":
-print("Le diste a " + tablero[inputFila][inputColumna])
-tablero[inputFila][inputColumna] = "🔥"
-tablero_visible[inputFila][inputColumna] = "🔥"
-graficar(tablero_visible)
-else:
-print("Volver a intentar")
-for fila in tablero_visible:
-tablero_visible[inputFila][inputColumna] = "❌"
-graficar(tablero_visible)
+    if tablero[inputFila][inputColumna] == "🚢":
+        print("¡Le diste a un barco!")
+        tablero[inputFila][inputColumna] = "🔥"
+        tablero_visible[inputFila][inputColumna] = "🔥"
+        graficar(tablero_visible)
+    else:
+        print("¡Agua! Intenta de nuevo.")
+        tablero_visible[inputFila][inputColumna] = "❌"
+        graficar(tablero_visible)
